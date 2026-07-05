@@ -1,0 +1,26 @@
+{
+  "name": "purelib",
+  "version": "1.0.0",
+  "description": "Library App",
+  "homepage": "https://github.com/ridloyusuf16/purelib#readme",
+  "bugs": {
+    "url": "https://github.com/ridloyusuf16/purelib/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ridloyusuf16/purelib.git"
+  },
+  "license": "ISC",
+  "author": "Muhammad Yusuf Ridlo",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1",
+    "nodemon": "^3.1.14"
+  }
+}
