@@ -1,0 +1,14 @@
+# Mengabaikan folder dependencies
+node_modules/
+
+# Mengabaikan file konfigurasi sensitif
+.env
+
+# Mengabaikan log error
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Mengabaikan file sampah sistem operasi
+.DS_Store
+Thumbs.db
