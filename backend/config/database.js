@@ -1,12 +1,14 @@
 import mongoose from 'mongoose'
 
-const connectDB = () => {
+const connectDB = async () => {
   try {
-    const conn = mongoose.connect('mongodb://127.0.0.1:27017/purelib')
+    const conn = await mongoose.connect('mongodb://127.0.0.1:27017/purelib', {
+      serverSelectionTimeoutMS: 5000 
+    })
     
     console.log('Database connected!')
   } catch {
-    console.error(`Error: ${error.message}`);
+    console.error(`Error: ${error.message}`)
 
     process.exit(1)
   }
