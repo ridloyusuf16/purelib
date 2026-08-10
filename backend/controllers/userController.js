@@ -1,4 +1,4 @@
-import User from '../models/User'
+import User from '../models/User.js'
 
 const getUsers = async (req, res) => {
   try {
@@ -33,7 +33,7 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try{
         const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
+            returnDocument: "after",
             runValidators: true
         })
 

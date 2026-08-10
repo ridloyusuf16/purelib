@@ -3,6 +3,7 @@ import cors from 'cors'
 import connectDB from './config/database.js'
 import bookRoutes from './routes/bookRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import authRoutes from './routes/authRoutes.js'
 
 // EXPRESS SETUP
 const app = express()
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/books', bookRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/auth', authRoutes)
 
 app.listen(port, () => {
     console.log(`PureLib Server listening at http://127.0.0.1:${port}`)
