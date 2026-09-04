@@ -80,14 +80,14 @@
       }
     });
 
-    $('.main-slider').slick({
-        autoplay: false,
-        autoplaySpeed: 4000,
-        fade: true,
-        dots: true,
-        prevArrow: $('.prev'),
-        nextArrow: $('.next'),
-    }); 
+    // $('.main-slider').slick({
+    //     autoplay: false,
+    //     autoplaySpeed: 4000,
+    //     fade: true,
+    //     dots: true,
+    //     prevArrow: $('.prev'),
+    //     nextArrow: $('.next'),
+    // }); 
 
     $('.product-grid').slick({
         slidesToShow: 4,

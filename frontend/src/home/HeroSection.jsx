@@ -1,4 +1,32 @@
+import { useEffect } from "react";
+
 export default function HeroSection() {
+  useEffect(() => {
+    // Pastikan jQuery dan Slick sudah siap
+    if (window.$ && typeof window.$.fn.slick === "function") {
+      const $slider = window.$(".main-slider");
+
+      // Inisialisasi jika belum aktif
+      if (!$slider.hasClass("slick-initialized")) {
+        $slider.slick({
+          autoplay: false,
+          autoplaySpeed: 4000,
+          fade: true,
+          dots: true,
+          prevArrow: window.$(".prev"),
+          nextArrow: window.$(".next"),
+        });
+      }
+    }
+
+    // Cleanup saat berpindah halaman/unmount
+    return () => {
+      if (window.$ && window.$(".main-slider").hasClass("slick-initialized")) {
+        window.$(".main-slider").slick("unslick");
+      }
+    };
+  }, []);
+
   return (
     <section id="billboard">
       <div className="container">
@@ -61,9 +89,8 @@ export default function HeroSection() {
                   className="banner-image"
                 />
               </div>
-              {/*slider-item*/}
+              {/* slider-item */}
             </div>
-            {/*slider*/}
             <button className="next slick-arrow">
               <i className="icon icon-arrow-right" />
             </button>
