@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <div id="header-wrap">
-      <div className="top-content">
+      {/* <div className="top-content">
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-6">
@@ -29,7 +29,6 @@ export default function Header() {
                   </li>
                 </ul>
               </div>
-              {/*social-links*/}
             </div>
             <div className="col-md-6">
               <div className="right-element">
@@ -60,11 +59,10 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-              {/*top-right*/}
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <header id="header">
         <div className="container-fluid">
@@ -72,7 +70,7 @@ export default function Header() {
             <div className="col-md-2">
               <div className="main-logo">
                 <a href="index.html">
-                  <img src="src/assets/images/main-logo.png" alt="logo" />
+                  <img src="src/assets/images/purelib-logo.png" alt="logo" />
                 </a>
               </div>
             </div>

@@ -1,4 +1,6 @@
 export default function Copyright() {
+  const year = new Date().getFullYear()
+
   return (
     <div id="footer-bottom">
       <div className="container">
@@ -8,8 +10,8 @@ export default function Copyright() {
               <div className="row">
                 <div className="col-md-6">
                   <p>
-                    © 2022 All rights reserved. Free HTML Template by{" "}
-                    <a href="https://www.templatesjungle.com/" target="_blank">
+                    © {year} All rights reserved. Free HTML Template by{" "}
+                    <a href="https://www.templatesjungle.com/" target="_blank" rel="noopener noreferrer">
                       TemplatesJungle
                     </a>
                   </p>

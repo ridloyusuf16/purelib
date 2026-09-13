@@ -31,26 +31,30 @@ Version: 1.1
 
 /* Theme Colors */
 :root {
-  --accent-color: #C5A992;
-  --secondary-color: #C5A992;
+  --secondary-accent-color: #C5A992;
+  /* --secondary-color: #C5A992; */
   --dark-color: #2f2f2f;
   --light-color: #F3F2EC;
   --body-text-color: #757575;
   --light-text-color: #afafaf;
   --dark-text-color: #2f2f2f;
+  --primary-color: #0D1B2A;
+  --secondary-color: #1B998B;
+  --third-color: #52BCA3;
+  --accent-color: #E6ECEF;
 }
 
 /* Fonts */
 :root {
   --body-font: "Raleway", sans-serif;
-  --heading-font: "Prata", Georgia, serif;
+  --heading-font: "Poppins", Georgia, serif;
   --secondary-font: "Playfair Display", Georgia, serif;
 }
 
 /* Bootstrap variables */
 :root,
 [data-bs-theme=light] {
-  --heading-font: "Prata", Georgia, serif;
+  --heading-font: "Poppins", Georgia, serif;
   --heading-font-weight: 400;
   --heading-color: var(--bs-dark);
   --heading-line-height: 1.1;
@@ -342,7 +346,7 @@ ol li {
 }
 
 ul li.active a {
-  color: #daa556;
+  color: var(--primary-color);
 }
 
 ul li:last-child,
@@ -1000,8 +1004,8 @@ fieldset[disabled] a.btn {
 
 .btn.btn-outline-accent {
   background: transparent;
-  border-color: var(--accent-color);
-  color: var(--accent-color);
+  border-color: var(--secondary-accent-color);
+  color: var(--secondary-accent-color);
 }
 
 .btn.btn-outline-accent:hover {
@@ -1149,7 +1153,7 @@ fieldset[disabled] a.btn {
 
 .nav-link:hover,
 .nav-link:focus {
-  color: var(--accent-color);
+  color: var(--secondary-color);
 }
 
 .nav-link.disabled {
@@ -1835,7 +1839,7 @@ img.post-image {
 }
 
 #header .menu-list a.active {
-  color: var(--accent-color);
+  color: var(--primary-color);
 }
 
 /*----- Billboard
@@ -2328,6 +2332,10 @@ footer#footer {
 #footer .footer-menu ul a {
   color: var(--dark-text-color);
   text-decoration: none;
+}
+
+#footer .menu-list a:hover {
+  color: var(--secondary-color);
 }
 
 #footer .footer-menu:last-child {

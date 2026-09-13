@@ -1,5 +1,8 @@
+import Copyright from './Copyright'
+
 export default function Footer() {
   return (
+    <>
     <footer id="footer">
       <div className="container">
         <div className="row">
@@ -7,7 +10,7 @@ export default function Footer() {
             <div className="footer-item">
               <div className="company-brand">
                 <img
-                  src="src/assets/images/main-logo.png"
+                  src="src/assets/images/text-logo.png"
                   alt="logo"
                   className="footer-logo"
                 />
@@ -107,5 +110,7 @@ export default function Footer() {
       </div>
     </footer>
 
+    <Copyright/>
+    </>
   )
 }
