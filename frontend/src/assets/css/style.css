@@ -1845,7 +1845,7 @@ img.post-image {
 /*----- Billboard
 --------------------------------------------------------------*/
 #billboard .main-slider {
-  padding: 80px 0;
+  padding: 80px 0 0;
 }
 
 .main-slider .slider-item {
@@ -2204,8 +2204,7 @@ span.prev-price {
 
 /*----- Latest Blog Section
 --------------------------------------------------------------*/
-#latest-blog {
-}
+
 
 #latest-blog article.column {
   margin-bottom: 60px;

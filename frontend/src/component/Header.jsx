@@ -1,4 +1,40 @@
+import { useEffect, useState } from "react";
+import MenuItem from "./MenuItem";
+
+const menus = [
+  { id: "home", name: "Beranda" },
+  // {id: 'featured-books', name: 'Featured'},
+  { id: "popular-books", name: "Koleksi" },
+  // {id: 'special-offer', name: 'Promo'},
+  { id: "latest-blog", name: "Artikel" },
+  // {id: 'download-app', name: 'Download App'}
+];
+
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggleMenu() {
+    setIsOpen(!isOpen);
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 200) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      removeEventListener("scroll", handleScroll);
+    };
+  });
+
   return (
     <div id="header-wrap">
       {/* <div className="top-content">
@@ -64,7 +100,7 @@ export default function Header() {
         </div>
       </div> */}
 
-      <header id="header">
+      <header id="header" className={`${isScrolled ? "fixed-top" : ""}`}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-2">
@@ -77,71 +113,34 @@ export default function Header() {
             <div className="col-md-10">
               <nav id="navbar">
                 <div className="main-menu stellarnav">
-                  <ul className="menu-list">
-                    <li className="menu-item active">
-                      <a href="#home">Home</a>
-                    </li>
-                    <li className="menu-item has-sub">
-                      <a href="#pages" className="nav-link">
-                        Pages
-                      </a>
-                      <ul>
-                        <li className="active">
-                          <a href="index.html">Home</a>
-                        </li>
-                        <li>
-                          <a href="index.html">About</a>
-                        </li>
-                        <li>
-                          <a href="index.html">Styles</a>
-                        </li>
-                        <li>
-                          <a href="index.html">Blog</a>
-                        </li>
-                        <li>
-                          <a href="index.html">Post Single</a>
-                        </li>
-                        <li>
-                          <a href="index.html">Our Store</a>
-                        </li>
-                        <li>
-                          <a href="index.html">Product Single</a>
-                        </li>
-                        <li>
-                          <a href="index.html">Contact</a>
-                        </li>
-                        <li>
-                          <a href="index.html">Thank You</a>
-                        </li>
-                      </ul>
-                    </li>
+                  <a href="#" className="menu-toggle full">
+                    <span className="bars">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                  </a>
+                  <ul className={`menu-list ${isOpen ? "open" : ""}`}>
+                    {menus.map((menu) => (
+                      <MenuItem
+                        key={menu.id}
+                        menu={menu}
+                        activeLink={activeLink}
+                        setActiveLink={setActiveLink}
+                      />
+                    ))}
                     <li className="menu-item">
-                      <a href="#featured-books" className="nav-link">
-                        Featured
+                      <a href="#" className="nav-link">
+                        Cart
                       </a>
                     </li>
                     <li className="menu-item">
-                      <a href="#popular-books" className="nav-link">
-                        Popular
-                      </a>
-                    </li>
-                    <li className="menu-item">
-                      <a href="#special-offer" className="nav-link">
-                        Offer
-                      </a>
-                    </li>
-                    <li className="menu-item">
-                      <a href="#latest-blog" className="nav-link">
-                        Articles
-                      </a>
-                    </li>
-                    <li className="menu-item">
-                      <a href="#download-app" className="nav-link">
-                        Download App
+                      <a href="#" className="nav-link">
+                        Profil
                       </a>
                     </li>
                   </ul>
-                  <div className="hamburger">
+                  <div className="hamburger" onClick={toggleMenu}>
                     <span className="bar" />
                     <span className="bar" />
                     <span className="bar" />

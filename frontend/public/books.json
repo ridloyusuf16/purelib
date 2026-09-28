@@ -1,0 +1,10 @@
+[
+  {"id": 1, "title": "Max Havelaar", "author": "Multatuli", "price": 135, "image": "tab-item1.jpg", "genre": "novel"},
+  {"id": 2, "title": "Bumi", "author": "Tere Liye", "price": 110, "image": "tab-item2.jpg", "genre": "novel"},
+  {"id": 3, "title": "Atomic Habits", "author": "James Clear", "price": 125, "image": "tab-item3.jpg", "genre": "self-improvement"},
+  {"id": 4, "title": "Filosofi Teras", "author": "Henry Manampiring", "price": 40, "image": "tab-item4.jpg", "genre": "self-improvement"},
+  {"id": 5, "title": "Basis Data", "author": "Priyanto", "price": 140, "image": "tab-item5.jpg", "genre": "technology"},
+  {"id": 6, "title": "Java OOP", "author": "Izuddin Mahali", "price": 40, "image": "tab-item6.jpg", "genre": "technology"},
+  {"id": 7, "title": "Pararaton", "author": "Johan M", "price": 40, "image": "tab-item7.jpg", "genre": "history"},
+  {"id": 8, "title": "Pulang", "author": "Leila S. Chudori", "price": 40, "image": "tab-item8.jpg", "genre": "history"}
+]
