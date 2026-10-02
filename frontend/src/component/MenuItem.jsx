@@ -1,12 +1,12 @@
-export default function MenuItem({ menu, activeLink, setActiveLink }) {
+import { NavLink } from "react-router";
+
+export default function MenuItem({ menu }) {
   return (
-    <li
-      className={`menu-item ${menu.subMenu ? "has-sub" : ""} ${activeLink === menu.id ? "active" : ""}`}
-      onClick={() => setActiveLink(menu.id)}
-    >
-      <a href={`#${menu.id}`} className="nav-link">
-        {menu.name}
-      </a>
+    <li className="menu-item">
+      <NavLink to={{ 
+        pathname: "/",
+        hash: `${menu.id === "home" ? "#billboard" : `#${menu.id}`}`
+       }}>{menu.name}</NavLink>
     </li>
   );
 }

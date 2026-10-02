@@ -1,14 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Route, Routes } from 'react-router'
 
-import Header from './component/Header.jsx'
-import Footer from './component/Footer.jsx'
 import HomePage from './pages/Home/HomePage.jsx'
+import GuestLayout from './GuestLayout.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Header />
-    <HomePage/>
-    <Footer/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<GuestLayout/>}>
+          <Route index element={<HomePage/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </StrictMode>
 )
