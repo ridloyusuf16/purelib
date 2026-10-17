@@ -1,18 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router";
 
-import HomePage from './pages/Home/HomePage.jsx'
-import GuestLayout from './GuestLayout.jsx'
+import AdminLayout from "./admin/layouts/AdminLayout.jsx";
 
-createRoot(document.getElementById('root')).render(
+import GuestLayout from "./public/layouts/PublicLayout.jsx";
+import Home from "./public/pages/Home.jsx";
+
+import './assets/css/style.css'
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<GuestLayout/>}>
-          <Route index element={<HomePage/>}/>
+        <Route path="/" element={<GuestLayout />}>
+          <Route index element={<Home />} />
         </Route>
+        <Route path="/admin" element={<AdminLayout />}></Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>
-)
+  </StrictMode>,
+);
