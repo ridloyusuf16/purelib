@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
 @import "flowbite-react/plugin/tailwindcss";
+
 @source "../../../.flowbite-react/class-list.json";
+
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+
+  --color-brand-dark: #0D1B2A;
+  --color-brand-primary: #1B998B;
+  --color-brand-secondary: #52BCA3;
+  --color-brand-light: #E6ECEF;
+  --color-brand-background: #F7F9F8;
+}
