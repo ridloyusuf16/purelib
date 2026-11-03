@@ -28,6 +28,13 @@ async function init() {
 
         app.use('/api', router)
 
+        app.use('/', (req, res) => {
+            res.status(200).json({
+                message: 'Server is running.',
+                data: null
+            })
+        })
+
         app.listen(port, () => {
             console.log(`PureLib Server listening at http://127.0.0.1:${port}`)
         })
