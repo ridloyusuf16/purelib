@@ -1,10 +1,11 @@
 import express from 'express'
-// import cors from 'cors'
+import cors from 'cors'
 import connectDB from './utils/database.js'
 // import bookRoutes from './routes/bookRoutes.js'
 // import userRoutes from './routes/userRoutes.js'
 // import authRoutes from './routes/authRoutes.js'
 import router from './routes/api.js'
+import docs from "./docs/route.js"
 
 async function init() {
     try {
@@ -14,7 +15,7 @@ async function init() {
         const app = express()
         const port = 5001
 
-        // app.use(cors())
+        app.use(cors())
         app.use(express.json())
 
         // ROUTE
@@ -27,6 +28,7 @@ async function init() {
         // app.use('/api/auth', authRoutes)
 
         app.use('/api', router)
+        docs(app)
 
         app.use('/', (req, res) => {
             res.status(200).json({

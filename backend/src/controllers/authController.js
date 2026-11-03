@@ -12,7 +12,14 @@ const registerValidateSchema = Yup.object({
 })
 
 const login = async (req, res) => {
-    
+    /*
+    #swagger.requestBody = {
+        required: true,
+        schema: {
+            $ref: "#/components/schemas/LoginRequest"
+        }
+    }
+    */
     const {identifier, password} = req.body
 
     try{
@@ -95,6 +102,14 @@ const register = async (req, res) => {
 }
 
 const me = async (req, res) => {
+    /*
+    #swagger.security = [
+        {
+            "bearerAuth": []
+        }
+    ]
+    */
+
     const user = req.user
     const result = await User.findById(user?.id)
 
