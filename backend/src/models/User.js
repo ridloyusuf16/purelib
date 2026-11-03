@@ -1,8 +1,18 @@
 import mongoose from 'mongoose'
-import bcrypt from 'bcryptjs'
+import encrypt from '../utils/encryption.js' 
 
 const userSchema = new mongoose.Schema(
     {
+        fullName: {
+            type: String,
+            required: [true, 'Nama wajib diisi!'],
+            trim: true
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
         username: {
             type: String,
             required: [true, 'Username wajib diisi.'],
@@ -13,26 +23,20 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Password wajib diisi.'],
             minLength: [8, 'Password minimal 8 karakter.'],
-            select: false,
+            // select: false,
             // trim: true | Tidak disarankan karena bisa saja user memang menggunakan spasi dalam membuat passwordnya
-        },
-        name: {
-            type: String,
-            required: [true, 'Nama wajib diisi!'],
-            trim: true
         },
         role: {
             type: String,
             enum: ['Admin', 'Guest'],
             default: 'Guest'
         },
-        status: {
-            type: String,
-            enum: {
-                values: ['Aktif', 'Tidak Aktif'],
-                messages: '{VALUE} bukan status yang valid.'
-            },
-            default: 'Aktif'
+        isActive: {
+            type: Boolean,
+            default: false
+        },
+        codeActivation: {
+            type: String
         }
     },
     {
@@ -41,17 +45,15 @@ const userSchema = new mongoose.Schema(
 )
 
 // Hashing password
-userSchema.pre('save', async function (next) {
-    if(!this.isModified('password')){
-        next()
-    }
-
-    this.password = await bcrypt.hash(this.password, 10)
+userSchema.pre('save', function () {
+    this.password = encrypt(this.password)
 })
 
-// Custom method untuk membandingkan password saat login
-userSchema.methods.matchPassword = async function (enteredPassword) {
-    return await bcrypt.compare(enteredPassword, this.password)
+userSchema.methods.toJSON = function (){
+    const user = this.toObject()
+    delete user.password
+
+    return user
 }
 
 const User = mongoose.model('User', userSchema)
