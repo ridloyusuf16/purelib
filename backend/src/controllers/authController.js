@@ -7,12 +7,28 @@ const registerValidateSchema = Yup.object({
     fullName: Yup.string().required(),
     email: Yup.string().email().required(),
     username: Yup.string().required(),
-    password: Yup.string().required(),
+    password: Yup.string().required()
+    .min(8, 'Password must be at least 8 characters.')
+    .test('at-least-one-uppercase-letter', (value) => {
+        if(!value) return false
+        
+        const regex = /^(?=.*[A-Z])/
+
+        return regex.test(value)
+    })
+    .test('at-least-one-number', (value) => {
+        if(!value) return false
+        
+        const regex = /^(?=.*\d)/
+
+        return regex.test(value)
+    }),
     confirmPassword: Yup.string().required().oneOf([Yup.ref("password"), ""], "Password not match.")
 })
 
 const login = async (req, res) => {
     /*
+    #swagger.tags = ['Auth']
     #swagger.requestBody = {
         required: true,
         schema: {
@@ -32,7 +48,8 @@ const login = async (req, res) => {
                 {
                     email: identifier
                 }
-            ]
+            ],
+            isActive: true
         })
 
         if(!userByIdentifier){
@@ -70,6 +87,17 @@ const login = async (req, res) => {
 }
 
 const register = async (req, res) => {
+
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.requestBody = {
+        required: true,
+        schema: {
+            $ref: "#/components/schemas/RegisterRequest"
+        } 
+    }
+    */
+
     const { fullName, username, email, password, confirmPassword} = req.body
 
     try {
@@ -103,6 +131,7 @@ const register = async (req, res) => {
 
 const me = async (req, res) => {
     /*
+    #swagger.tags = ['Auth']
     #swagger.security = [
         {
             "bearerAuth": []
@@ -110,13 +139,57 @@ const me = async (req, res) => {
     ]
     */
 
-    const user = req.user
-    const result = await User.findById(user?.id)
-
-    return res.status(200).json({
-        message: 'Get user profile is success',
-        data: result
-    })
+    try {
+        const user = req.user
+        const result = await User.findById(user?.id)
+    
+        return res.status(200).json({
+            message: 'Get user profile is success',
+            data: result
+        })
+    } catch (error) {
+        return res.status(400).json({
+            message: error.message,
+            data: null
+        })
+    }
 }
 
-export default { login, register, me } 
+const activation = async (req, res) => {
+
+    /*
+    #swagger.tags = ['Auth']
+    #swagger.requestBody = {
+        required: true,
+        schema: {
+            $ref: "#/components/schemas/ActivationRequest"
+        }
+    }
+    */
+
+    try{
+        const {code} = req.body
+
+        const result = await User.findOneAndUpdate({
+            activationCode: code
+        }, {
+            isActive: true
+        }, {
+            new: true
+        })
+
+        res.status(200).json({
+            message: 'User succesfully activated.',
+            data: result
+        })
+
+    }catch(error){
+        return res.status(400).json({
+            message: error.message,
+            data: null
+        })
+    }
+
+}
+
+export default { login, register, me, activation } 

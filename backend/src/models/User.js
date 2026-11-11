@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
-import encrypt from '../utils/encryption.js' 
+import encrypt from '../utils/encryption.js'
+import {sendMail, renderMailHtml} from '../utils/mail/mail.js'
+import {CLIENT_HOST, EMAIL_SMTP_USER} from '../utils/env.js'
 
 const userSchema = new mongoose.Schema(
     {
@@ -35,7 +37,7 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
-        codeActivation: {
+        activationCode: {
             type: String
         }
     },
@@ -46,7 +48,37 @@ const userSchema = new mongoose.Schema(
 
 // Hashing password
 userSchema.pre('save', function () {
+
     this.password = encrypt(this.password)
+    this.activationCode = encrypt(this.id)
+
+})
+
+userSchema.post('save', async function(doc, next) {
+    try {
+        const user = doc
+
+        console.log(`Email send to: ${user.email}`)
+
+        const contentMail = await renderMailHtml('registration-success.ejs', {
+            fullName: user.fullName,
+            username: user.username,
+            email: user.email,
+            createdAt: user.createdAt,
+            activationLink: `${CLIENT_HOST}/auth/activation?code=${user.activationCode}`
+        })
+
+        await sendMail({
+            from: EMAIL_SMTP_USER,
+            to: user.email,
+            subject: "Aktivasi Akun Anda",
+            html: contentMail
+        })
+    } catch (error) {
+        console.log(error)
+    } finally {
+        next()
+    }
 })
 
 userSchema.methods.toJSON = function (){
