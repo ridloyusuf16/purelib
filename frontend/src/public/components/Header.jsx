@@ -19,12 +19,12 @@ export default function Header() {
 
   return (
     <ThemeProvider theme={customTheme}>
-      <Navbar fluid rounded className="border-b border-brand-light !px-20">
+      <Navbar fluid rounded className="border-b border-brand-light px-20!">
         <NavbarBrand href="#">
           <img src="/purelib-logo.png" className="mr-3 h-6 sm:h-9" alt="Purelib Logo" />
           {/* <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">PureLib</span> */}
         </NavbarBrand>
-        <div className="flex md:order-2">
+        <div className="flex md:order-2 z-10">
           <Dropdown
             arrowIcon={false}
             inline
