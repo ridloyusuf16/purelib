@@ -1,30 +1,28 @@
 export default function Footer() {
   return (
     <>
-    <footer id="footer">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4">
+    <footer className="bg-brand-dark text-brand-light">
+        <div className="flex px-20 py-15 gap-2">
+          <div className="basis-4/12">
             <div className="footer-item">
-              <div className="company-brand">
-                <img
+              <div className="company-brand flex flex-col gap-5">
+                {/* <img
                   src="src/assets/images/text-logo.png"
                   alt="logo"
-                  className="footer-logo"
-                />
+                  className="footer-logo  max-w-fit"
+                /> */}
+                <h1 className="text-6xl font-medium">PureLib.</h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Sagittis sed ptibus liberolectus nonet psryroin. Amet sed
-                  lorem posuere sit iaculis amet, ac urna. Adipiscing fames
-                  semper erat ac in suspendisse iaculis.
+                  Setiap perpustakaan memiliki ceritanya masing-masing.
                 </p>
               </div>
+              <p className="text-xs text-slate-600 mt-10">Copyright &copy; 2026 M. Yusuf Ridlo. All rights reserved.</p>
             </div>
           </div>
-          <div className="col-md-2">
+          <div className="basis-2/12">
             <div className="footer-menu">
-              <h5>About Us</h5>
-              <ul className="menu-list">
+              <h5 className="text-brand-primary text-lg font-medium">About Us</h5>
+              <ul className="menu-list flex flex-col gap-2 pt-3">
                 <li className="menu-item">
                   <a href="#">vision</a>
                 </li>
@@ -43,10 +41,10 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="col-md-2">
+          <div className="basis-2/12">
             <div className="footer-menu">
-              <h5>Discover</h5>
-              <ul className="menu-list">
+              <h5 className="text-brand-primary text-lg font-medium">Discover</h5>
+              <ul className="menu-list flex flex-col gap-2 pt-3">
                 <li className="menu-item">
                   <a href="#">Home</a>
                 </li>
@@ -65,10 +63,10 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="col-md-2">
+          <div className="basis-2/12">
             <div className="footer-menu">
-              <h5>My account</h5>
-              <ul className="menu-list">
+              <h5 className="text-brand-primary text-lg font-medium">My Account</h5>
+              <ul className="menu-list flex flex-col gap-2 pt-3">
                 <li className="menu-item">
                   <a href="#">Sign In</a>
                 </li>
@@ -84,10 +82,10 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="col-md-2">
+          <div className="basis-2/12">
             <div className="footer-menu">
-              <h5>Help</h5>
-              <ul className="menu-list">
+              <h5 className="text-brand-primary text-lg font-medium">Help</h5>
+              <ul className="menu-list flex flex-col gap-2 pt-3">
                 <li className="menu-item">
                   <a href="#">Help center</a>
                 </li>
@@ -104,8 +102,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        {/* / row */}
-      </div>
+        {/* <div className="flex align-middle justify-start bg-brand-dark px-20 py-5">
+          <p className="text-sm text-slate-600">Copyright &copy;2026. Muhammad Yusuf Ridlo. All Right Reserved.</p>
+        </div> */}
     </footer>
     </>
   )
